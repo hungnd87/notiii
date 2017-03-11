@@ -4,7 +4,8 @@
   "description": "app alert stock indicator",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "app.js"
   },
   "keywords": [
     "noti",
@@ -13,12 +14,14 @@
     "stock",
     "indicator"
   ],
-  "author": "HungND, TungTD, MinhNH",
+  "author": "ilsh2001@gmail.com",
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.2",
     "facebook-node-sdk": "^0.2.0",
-    "fb": "^1.1.1"
+    "fb": "^1.1.1",
+    "axios":"^0.15.3",
+    "body-parser":"^1.17.1"
   },
   "engines": {
     "node": "6.3.1"
