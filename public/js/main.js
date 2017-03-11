@@ -75,6 +75,12 @@ $(document).ready(function(){
           }
           return true;
       }
+
+      if (loginStatus != null && loginStatus.status === "connected" && !loginStatus.isExpired()) {
+          updateStatusCallback(loginStatus);
+          return;
+      }
+      
     });
   });
 
