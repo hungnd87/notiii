@@ -39,8 +39,10 @@ $(document).ready(function(){
       url: '/facebookAuth?access_token='+ response.authResponse.accessToken,
       data: response.authResponse,
       type: 'POST',
+      dataType: 'json',
       success: function(res) {
         console.log(res)
+        $('#loginWrp').html('<strong>' + res.name + '</strong>');
       }
     })
   }

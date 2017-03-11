@@ -1,11 +1,10 @@
 {
   "name": "notiii",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "app alert stock indicator",
   "main": "app.js",
   "scripts": {
-    "test": "test",
-    "start": "app.js"
+    "start": "node app.js"
   },
   "keywords": [
     "noti",
@@ -23,6 +22,7 @@
     "axios":"^0.15.3",
     "body-parser":"^1.17.1"
   },
+  "readme": "README.md",
   "engines": {
     "node": "6.3.1"
   }
