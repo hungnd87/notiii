@@ -1,0 +1,23 @@
+{
+  "name": "notiii",
+  "version": "1.0.0",
+  "description": "app alert stock indicator",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "noti",
+    "chung",
+    "khoan",
+    "stock",
+    "indicator"
+  ],
+  "author": "HungND, TungTD, MinhNH",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "facebook-node-sdk": "^0.2.0",
+    "fb": "^1.1.1"
+  }
+}
