@@ -92,9 +92,10 @@ $(document).ready(function(){
   });
 
   $('.signout').click(function(){
+    $('.logined').addClass('hidden');
+    $('.not-login').removeClass('hidden');
     FB.logout(function(){
-      $('.not-login').removeClass('hidden');
-      $('.logined').addClass('hidden');
+      
     });
     
   });
