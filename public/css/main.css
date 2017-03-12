@@ -276,6 +276,12 @@ a:hover, a:focus {
 	margin-top: 6px;
 }
 
+.big-logo {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 
 
 /* ==========================================================================
@@ -300,7 +306,7 @@ header {
   left: 0;
   right: 0;
   margin-left: 0px;
-  margin-bottom: 12%;
+  margin-bottom: 10%;
 }
 
 .signin {
