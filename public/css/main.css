@@ -310,6 +310,7 @@ header {
 
 .signin {
   padding-top: 9px;
+  height: 30px;
 }
 
 
@@ -645,6 +646,7 @@ footer {
             filter: drop-shadow( 1px 1px 1px #aaa ); /* Same syntax as box-shadow, except 
                                                        for the spread property */
 }
+
 
 
 /* Landscape phone to portrait tablet */

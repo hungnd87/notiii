@@ -42,7 +42,9 @@ $(document).ready(function(){
       dataType: 'json',
       success: function(res) {
         console.log(res)
-        $('#loginWrp').html('<strong>' + res.name + '</strong>');
+        $('#loginWrp span.name').html('<strong>' + res.name + '</strong>');
+        $('.not-login').addClass('hidden');
+        $('.logined').removeClass('hidden');
       }
     })
   }
@@ -80,13 +82,21 @@ $(document).ready(function(){
           updateStatusCallback(loginStatus);
           return;
       }
-      
+
     });
   });
 
 
   $('#facebookLogin').click(function(){
     login();
-  })
+  });
+
+  $('.signout').click(function(){
+    FB.logout(function(){
+      $('.not-login').removeClass('hidden');
+      $('.logined').addClass('hidden');
+    });
+    
+  });
 
 });
