@@ -291,7 +291,6 @@ header {
   background: url(../images/bg.jpeg) no-repeat center center;
   width: 100%;
   padding: 20px 10px 60px 10px;
-  height: 100vh;
   overflow: hidden;
   background-size: cover;
   -webkit-background-size: cover;
@@ -300,13 +299,13 @@ header {
 }
 
 .header-info {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   left: 0;
   right: 0;
   margin-left: 0px;
-  margin-bottom: 10%;
+  margin-bottom: 100px;
 }
 
 .signin {
@@ -639,6 +638,12 @@ footer {
       background-attachment: scroll;
   }
 
+}
+
+.shadow {
+    -webkit-filter: drop-shadow( 1px 1px 1px #aaa );
+            filter: drop-shadow( 1px 1px 1px #aaa ); /* Same syntax as box-shadow, except 
+                                                       for the spread property */
 }
 
 
