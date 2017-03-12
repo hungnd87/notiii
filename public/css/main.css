@@ -141,12 +141,12 @@ a:hover, a:focus {
 }
 
 .btn-secondary {
-  background-color: #ffffff;
-  color: #231f20;
+  background-color: #3b5998;
+  color: #fff;
 }
 
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active {
-  background-color: #3b5998;
+  background-color: #456ab7;
   color: #fff;
   -webkit-transition: all 0.35s ease-in-out;
   -moz-transition: all 0.35s ease-in-out;
