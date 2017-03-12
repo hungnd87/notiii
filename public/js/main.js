@@ -87,7 +87,7 @@ $(document).ready(function(){
   });
 
 
-  $('#facebookLogin').click(function(){
+  $('.facebookLogin').click(function(){
     login();
   });
 

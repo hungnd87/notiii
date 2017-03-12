@@ -146,15 +146,18 @@ a:hover, a:focus {
 }
 
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active {
-  background-color: #ededed;
-  color: #231f20;
+  background-color: #3b5998;
+  color: #fff;
   -webkit-transition: all 0.35s ease-in-out;
   -moz-transition: all 0.35s ease-in-out;
   -o-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
 }
 
-
+.btn-notiii {
+  background-color: #ffffff;
+  color: #231f20;
+}
 
 
 /*-----------------Margins------------------*/
@@ -647,7 +650,11 @@ footer {
                                                        for the spread property */
 }
 
-
+.fa-facebook-f {
+    color: #3b5998;
+    cursor: pointer;
+    font-size: 20px;
+}
 
 /* Landscape phone to portrait tablet */
 @media (min-width: 481px) and (max-width: 767px) { 
