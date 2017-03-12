@@ -80,7 +80,12 @@ $(document).ready(function(){
 
       if (loginStatus != null && loginStatus.status === "connected" && !loginStatus.isExpired()) {
           updateStatusCallback(loginStatus);
+          $('.not-login').addClass('hidden');
+          $('.logined').removeClass('hidden');
           return;
+      } else {
+        $('.logined').addClass('hidden');
+        $('.not-login').removeClass('hidden');
       }
 
     });
