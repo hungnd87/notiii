@@ -692,8 +692,10 @@ input {
 }
 
 input.small-ip {
-  width: 30%;
-  border: none;
+  width: 40%;
+}
+select {
+  margin: 10px;
 }
 
 .create-noti-block{
@@ -722,13 +724,13 @@ box-shadow: 3px 3px 5px 0px rgba(100,100,100,0.3);
 
 .create-noti-wrp.open .create-noti-btn{
   display: none;
-  -webkit-transition: all 0.8s ease;
+  -webkit-transition: all 1.8s ease;
   transition: all 1.8s ease;
 }
 
 .create-noti-wrp.open .create-noti-block{
     height: 200px;
-     -webkit-transition: all 0.8s ease;
+     -webkit-transition: all 1.8s ease;
     transition: all 1.8s ease;
 }
 .create-noti-wrp.open .row {
