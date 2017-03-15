@@ -31,7 +31,7 @@ $(document).ready(function(){
           mobile:       false        // trigger animations on mobile devices (true is default)
         }
       );
-      //wow.init();
+      wow.init();
 
   updateStatusCallback = function(response) {
     console.log(response);

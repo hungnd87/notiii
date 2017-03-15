@@ -20,10 +20,10 @@ p, .lead {
 }
 
 h1 {
-  font-size: 55px;
+  font-size: 45px;
   line-height: 55px;
   letter-spacing: -1px;
-  color: #696969;
+  color: #c0e7e4;
   font-weight: 700;
 }
 
@@ -42,18 +42,18 @@ h3 {
   color: #231f20;
   font-weight: 700;
 }
-
+.content {
+  margin-top: 140px;
+}
 .lead {
   font-size: 21px;
-  background: white;
-    padding: 20px;
-    background-color:rgba(255, 255, 255, 0.5);
+  padding: 20px;
 }
 
 p {
   font-size: 17px;
   line-height: 22px;
-  color: #000;
+  color: #d0e5e1;
   font-weight: 400;
 }
 
@@ -127,13 +127,13 @@ a:hover, a:focus {
 }
 
 .btn-primary {
-  background-color:#70cbce;
-  color: #ffffff;
+  background-color:#f5f5f5;
+  color: #696969;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
-  background-color: #8be2e5;
-  color: #ffffff;
+  background-color: #fff;
+  color: #666;
   -webkit-transition: all 0.35s ease-in-out;
   -moz-transition: all 0.35s ease-in-out;
   -o-transition: all 0.35s ease-in-out;
@@ -290,15 +290,26 @@ a:hover, a:focus {
 /* ==========================================================================
    Main styles
    ========================================================================== */
+body {
+   background: rgb(0, 150, 136); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgb(0, 150, 136), rgba(76, 175, 149, 1)); /*Standard*/
+}
 header {
-  background: url(../images/bg.jpeg) no-repeat center center;
+ /* background: url(../images/bg.jpeg) no-repeat center center;*/
   width: 100%;
+  height: 100%;
   padding: 20px 10px 60px 10px;
   overflow: hidden;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+
+
+ 
 }
 
 .header-info {
@@ -613,7 +624,14 @@ footer {
     opacity: 1;
 }
 
-
+.header {
+  background-color: #f5f5f5;
+  position: fixed;
+  height: 60px;
+  top: 0px;
+  width: 100%;
+  z-index: 100;
+}
 
 
 /* ==========================================================================
