@@ -23,7 +23,7 @@ h1 {
   font-size: 45px;
   line-height: 55px;
   letter-spacing: -1px;
-  color: #c0e7e4;
+  color: #757575;
   font-weight: 700;
 }
 
@@ -53,7 +53,7 @@ h3 {
 p {
   font-size: 17px;
   line-height: 22px;
-  color: #d0e5e1;
+  color: #757575;
   font-weight: 400;
 }
 
@@ -127,8 +127,8 @@ a:hover, a:focus {
 }
 
 .btn-primary {
-  background-color:#f5f5f5;
-  color: #696969;
+  background-color:#40ab93;
+  color: #f5f5f5;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
@@ -142,7 +142,7 @@ a:hover, a:focus {
 
 .btn-secondary {
   background-color: #3b5998;
-  color: #fff;
+  color: #f5f5f5;
 }
 
 .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active {
@@ -251,7 +251,7 @@ a:hover, a:focus {
 }
 
 .navbar-inverse .navbar-nav > li > a, .navbar-nav a {
-    color: #696969;
+    color: #f5f5f5;
     font-size: 14px;
     letter-spacing: 1px;
 }
@@ -291,11 +291,8 @@ a:hover, a:focus {
    Main styles
    ========================================================================== */
 body {
-   background: rgb(0, 150, 136); /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Safari 5.1-6*/
-  background: -o-linear-gradient(right,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Opera 11.1-12*/
-  background: -moz-linear-gradient(right,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Fx 3.6-15*/
-  background: linear-gradient(to right, rgb(0, 150, 136), rgba(76, 175, 149, 1)); /*Standard*/
+   background: #f5f5f5; /* For browsers that do not support gradients */
+  
 }
 header {
  /* background: url(../images/bg.jpeg) no-repeat center center;*/
@@ -625,7 +622,11 @@ footer {
 }
 
 .header {
-  background-color: #f5f5f5;
+  background: -webkit-linear-gradient(left,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(right,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(right,rgb(0, 150, 136),rgba(76, 175, 149, 1)); /*Fx 3.6-15*/
+  background: linear-gradient(to right, rgb(0, 150, 136), rgba(76, 175, 149, 1)); /*Standard*/
+
   position: fixed;
   height: 60px;
   top: 0px;
@@ -672,6 +673,52 @@ footer {
     color: #3b5998;
     cursor: pointer;
     font-size: 20px;
+}
+.facebookLogin{
+  background: white;
+    padding: 10px 12px;
+    background-color: white;
+    border-radius: 19px;
+}
+
+input {
+    background: rgba(255,255,255,.95);
+    border: 1px solid rgba(0,0,0,.2);
+    font-size: 14px;
+    padding: 5px 5px 4px;
+    width: 160px;
+    border-radius: 3px;
+    width: 100%;
+}
+.create-noti-block{
+  margin-top: 20px;
+  
+  color: #f3f3f3;
+  height: 0px;
+  overflow: hidden;
+}
+.create-noti-wrp.open{
+  background: #40ab93;
+  height: 200px;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(100,100,100,0.75);
+-moz-box-shadow: 3px 3px 5px 0px rgba(100,100,100,0.75);
+box-shadow: 3px 3px 5px 0px rgba(100,100,100,0.75);
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+
+}
+
+.create-noti-wrp.open .create-noti-btn{
+  display: none;
+  -webkit-transition: all 0.8s ease;
+  transition: all 1.8s ease;
+}
+
+.create-noti-wrp.open .create-noti-block{
+    height: 200px;
+     -webkit-transition: all 0.8s ease;
+    transition: all 1.8s ease;
 }
 
 /* Landscape phone to portrait tablet */

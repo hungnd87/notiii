@@ -96,6 +96,11 @@ $(document).ready(function(){
     login();
   });
 
+  $('.create-noti-btn').click(function(e){
+    e.preventDefault();
+    $('.create-noti-wrp').addClass('open')
+  });
+
   $('.signout').click(function(){
     $('.logined').addClass('hidden');
     $('.not-login').removeClass('hidden');
