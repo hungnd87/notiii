@@ -57,6 +57,10 @@ p {
   font-weight: 400;
 }
 
+i {
+  margin: 5px;
+}
+
 /*------------------Utilities---------------------*/
 a {
   color: inherit;
@@ -709,10 +713,10 @@ select {
   border: none;
 }
 .create-noti-wrp.open{
-  border-left: solid 4px #009688;
-    border-top: solid 1px #f1f2f2;
-  background: #fff;
-  height: 200px;
+  
+    border: solid 1px #f1f2f2;
+  background: #f9f8f8;
+  height: 300px;
   border-radius: 5px;
   -webkit-box-shadow: 3px 3px 5px 0px rgba(100,100,100,0.3);
 -moz-box-shadow: 3px 3px 5px 0px rgba(100,100,100,0.3);
@@ -721,26 +725,44 @@ box-shadow: 3px 3px 5px 0px rgba(100,100,100,0.3);
   transition: all 0.8s ease;
 
 }
-
+.create-noti-btn {
+  padding-left: 35%;
+  text-transform: uppercase;
+}
 .create-noti-wrp.open .create-noti-btn{
-  display: none;
-  -webkit-transition: all 1.8s ease;
-  transition: all 1.8s ease;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  padding: 0px;
 }
 
+.create-noti-wrp.open .create-noti-btn .wow{
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+  padding: 0px;
+ /* margin: -10px;*/
+}
+
+.create-noti-wrp.open .create-noti-btn a{
+ 
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+   width: 100%
+}
 .create-noti-wrp.open .create-noti-block{
-    height: 200px;
-     -webkit-transition: all 1.8s ease;
-    transition: all 1.8s ease;
+    height: 400px;
+     -webkit-transition: all 0.8s ease;
+    transition: all 0.8s ease;
 }
 .create-noti-wrp.open .row {
   padding-bottom: 10px;
 }
 
 .create-noti-wrp.open .btn-primary {
-  margin: 10px;
-  text-transform: capitalize;
+  /*margin: 10px;*/
   padding-bottom: 10px;
+}
+.create-noti-wrp.open .create-noti-block .btn-primary {
+  text-transform: capitalize;
 }
 
 

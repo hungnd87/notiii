@@ -98,6 +98,7 @@ $(document).ready(function(){
 
   $('.create-noti-btn').click(function(e){
     e.preventDefault();
+     $("html, body").animate({ scrollTop: $(document).height() }, 2000);
     $('.create-noti-wrp').addClass('open')
   });
 
