@@ -729,10 +729,26 @@ box-shadow: 3px 3px 5px 0px rgba(100,100,100,0.3);
   padding-left: 35%;
   text-transform: uppercase;
 }
+
+.create-noti-btn .fa-caret-up{
+   display: none;
+}
+.create-noti-btn .fa-caret-down{
+   display: inline-block;
+}
+
+
 .create-noti-wrp.open .create-noti-btn{
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
   padding: 0px;
+}
+
+.create-noti-wrp.open .create-noti-btn .fa-caret-up{
+   display: inline-block;
+}
+.create-noti-wrp.open .create-noti-btn .fa-caret-down{
+   display: none;
 }
 
 .create-noti-wrp.open .create-noti-btn .wow{
