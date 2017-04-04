@@ -1,5 +1,6 @@
 var SockJS = require('sockjs-client');
 var axios = require('axios');
+var PubSub = require('./PubSub.js');
 var MessageUnmarshaller = require('./MessageUnmarshaller');
 var kafka = require('kafka-node'),
     Producer = kafka.Producer,
@@ -120,10 +121,15 @@ function consumePriceService() {
 			
 		};
 		sock.onclose = function() {
-			console.log('close');
+			console.log('socket close');
+			PubSub.publish("socket_disconnect");
 		};
 	});
 }
+
+PubSub.subscribe('socket_disconnect', function(){
+	consumePriceService();
+});
 
 kafkaProducer.on('ready', function () {
     console.log("connect kafka")
