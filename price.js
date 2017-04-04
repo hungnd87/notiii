@@ -3,8 +3,25 @@ var axios = require('axios');
 var MessageUnmarshaller = require('./MessageUnmarshaller');
 var kafka = require('kafka-node'),
     Producer = kafka.Producer,
-    client = new kafka.Client('localhost:2181', 'notiii-node'),
-    producer = new Producer(client);
+    kafkaClient = new kafka.Client('localhost:2181', 'notiii-node'),
+    kafkaProducer = new Producer(kafkaClient);
+
+var Constant = {
+	STOCK : 'STOCK',
+	AD_ORDER : 'AD_ORDER',
+	PT_ORDER : 'PT_ORDER',
+	MARKETINFO : 'MARKETINFO',
+	MARKET_STATUS: 'MARKET_STATUS',
+	TRANSACTION : 'TRANSACTION',
+	CATEGORY : 'CATEGORY',
+	CEILING_FLOOR_COUNT: 'CEILING_FLOOR_COUNT', 
+	MARKET_BEGIN : 'MARKET_BEGIN',
+	MARKET_END : 'MARKET_END',
+	MARKET_END_RECOVERY : 'MARKET_END_RECOVERY',
+	COMPANY: 'COMPANY'
+};
+
+var FLOOR_CODES = ['02', '03', '10' ,'11' , '12', '13'];
 
 SockJS.prototype.emit = function(){
 	var msg;
@@ -35,48 +52,63 @@ function getStockList(){
 	})
 }
 
-producer.on('ready', function () {
+ 
+
+function consumePriceService() {
+
+	getStockList().then(function(data){
+		var sock = new SockJS('https://price-hn01.vndirect.com.vn/realtime');
+		console.log("Total " + stockCodes.length + " symbols. Start registConsumer");
+
+		sock.onopen = function() {
+			console.log('open');
+
+			sock.emit('registConsumer', {
+			 	sequence: 0,
+			 	params: {
+			 		name: 'STOCK',
+			 		codes: stockCodes
+			 	},
+			 	isIntervalRegist: false
+			});
+
+			sock.emit('registConsumer', {
+			 	sequence: 0,
+			 	params: {
+			 		name: Constant.MARKETINFO,
+			 		codes: FLOOR_CODES
+			 	},
+			 	isIntervalRegist: false
+			});
+		};
+
+		sock.onmessage = function(e) {
+			var msg = JSON.parse(e.data);
+
+			switch (msg.type) {
+				case 'returnData': 
+					var stockMap = msg.data.data
+					for (var stockCode in stockMap) {
+						var stockInfo = stockMap[stockCode];
+
+						//console.log(MessageUnmarshaller.unmarshal('STOCK', stockInfo))
+					}
+					break
+				case 'STOCK':
+					console.log(msg.data)
+			}
+			
+		};
+		sock.onclose = function() {
+			console.log('close');
+		};
+	});
+}
+
+kafkaProducer.on('ready', function () {
     console.log("connect kafka")
-});
- 
-
-
-getStockList().then(function(data){
-	var sock = new SockJS('https://price-hn01.vndirect.com.vn/realtime');
-	sock.onopen = function() {
-
-	console.log('open');
-	sock.emit('registConsumer', {
-	 	sequence: 0,
-	 	params: {
-	 		name: 'STOCK',
-	 		codes: stockCodes
-	 	},
-	 	isIntervalRegist: false
-	 })
-	};
-
-	sock.onmessage = function(e) {
-		var msg = JSON.parse(e.data);
-
-		switch (msg.type) {
-			case 'returnData': 
-				var stockMap = msg.data.data
-				for (var stockCode in stockMap) {
-					var stockInfo = stockMap[stockCode];
-
-					//console.log(MessageUnmarshaller.unmarshal('STOCK', stockInfo))
-				}
-				break
-			case 'STOCK':
-				console.log(msg.data)
-		}
-		
-	};
-	sock.onclose = function() {
-		console.log('close');
-	};
+    consumePriceService();
 });
 
- 
+
 
