@@ -31,6 +31,11 @@ app.post('/facebookAuth', function (req, res) {
  	
 })
 
+app.get('/facebook/message', function(req, res){
+	console.log(req.body);
+	res.end('ok');
+})
+
 app.listen(port, function () {
   console.log('Example app listening on port ' + port)
 })
