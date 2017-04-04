@@ -1,6 +1,10 @@
- var SockJS = require('sockjs-client');
- var axios = require('axios');
+var SockJS = require('sockjs-client');
+var axios = require('axios');
 var MessageUnmarshaller = require('./MessageUnmarshaller');
+var kafka = require('kafka-node'),
+    Producer = kafka.Producer,
+    client = new kafka.Client('localhost:2181', 'notiii-node'),
+    producer = new Producer(client);
 
 SockJS.prototype.emit = function(){
 	var msg;
@@ -31,6 +35,10 @@ function getStockList(){
 	})
 }
 
+producer.on('ready', function () {
+    console.log("connect kafka")
+});
+ 
 
 
 getStockList().then(function(data){
