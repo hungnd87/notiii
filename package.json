@@ -20,7 +20,8 @@
     "facebook-node-sdk": "^0.2.0",
     "fb": "^1.1.1",
     "axios":"^0.15.3",
-    "body-parser":"^1.17.1"
+    "body-parser":"^1.17.1",
+    "SockJS-client":"*"
   },
   "readme": "README.md",
   "engines": {
