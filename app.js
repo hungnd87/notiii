@@ -1,13 +1,18 @@
 
+var https = require('https');
 var express = require('express')
 var app = express();
 var axios = require('axios');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+
+var privateKey = fs.readFileSync( 'hostname.key' );
+var certificate = fs.readFileSync( 'hostname.pem' );
 
 
 getPageAccessToken = function(){}
 
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 443;
 
 
 app.use(express.static('public'));
@@ -36,7 +41,11 @@ app.get('/facebook/message', function(req, res){
 	res.end('ok');
 })
 
-app.listen(port, function () {
-  console.log('Example app listening on port ' + port)
-})
+// app.listen(port, function () {
+//   console.log('Example app listening on port ' + port)
+// })
+https.createServer({
+    key: privateKey,
+    cert: certificate
+}, app).listen(port);
 
