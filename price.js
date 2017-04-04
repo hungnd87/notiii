@@ -61,7 +61,7 @@ function consumePriceService() {
 		console.log("Total " + stockCodes.length + " symbols. Start registConsumer");
 
 		sock.onopen = function() {
-			console.log('open');
+			console.log('open socket');
 
 			sock.emit('registConsumer', {
 			 	sequence: 0,
@@ -83,19 +83,39 @@ function consumePriceService() {
 		};
 
 		sock.onmessage = function(e) {
-			var msg = JSON.parse(e.data);
+			try {
+				var msg = JSON.parse(e.data);
 
-			switch (msg.type) {
-				case 'returnData': 
-					var stockMap = msg.data.data
-					for (var stockCode in stockMap) {
-						var stockInfo = stockMap[stockCode];
+				switch (msg.type) {
+					case 'returnData': 
+						var stockMap = msg.data.data
+						for (var stockCode in stockMap) {
+							var stockInfo = stockMap[stockCode];
 
-						//console.log(MessageUnmarshaller.unmarshal('STOCK', stockInfo))
-					}
-					break
-				case 'STOCK':
-					console.log(msg.data)
+							//console.log(MessageUnmarshaller.unmarshal('STOCK', stockInfo))
+						}
+						break
+					case 'STOCK':
+						var stock = MessageUnmarshaller.unmarshal('STOCK', msg.data.data)
+						kafkaProducer.send([{
+							topic: 'price', 
+							messages: JSON.stringify(stock), 
+							partition: 0 
+						}]);
+
+						break
+					case 'MARKETINFO':
+						var market = MessageUnmarshaller.unmarshal('MARKETINFO', msg.data.data)
+						kafkaProducer.send([{
+							topic: 'price', 
+							messages: JSON.stringify(market), 
+							partition: 0
+						}]);
+						break
+				}
+
+			} catch (e) {
+				console.log(e);
 			}
 			
 		};
