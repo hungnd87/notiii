@@ -1,4 +1,4 @@
- var SockJS = require('SockJS-client');
+ var SockJS = require('sockjs-client');
  var axios = require('axios');
 var MessageUnmarshaller = require('./MessageUnmarshaller');
 
