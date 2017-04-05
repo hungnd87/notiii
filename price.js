@@ -97,7 +97,8 @@ function consumePriceService() {
 						}
 						break
 					case 'STOCK':
-						var stock = MessageUnmarshaller.unmarshal('STOCK', msg.data.data)
+						console.log(msg.data)
+						var stock = MessageUnmarshaller.unmarshal('STOCK', msg.data)
 						kafkaProducer.send([{
 							topic: 'price', 
 							messages: JSON.stringify(stock), 
@@ -106,7 +107,8 @@ function consumePriceService() {
 
 						break
 					case 'MARKETINFO':
-						var market = MessageUnmarshaller.unmarshal('MARKETINFO', msg.data.data)
+						console.log(msg.data)
+						var market = MessageUnmarshaller.unmarshal('MARKETINFO', msg.data)
 						kafkaProducer.send([{
 							topic: 'price', 
 							messages: JSON.stringify(market), 
