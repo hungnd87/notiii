@@ -102,7 +102,9 @@ function consumePriceService() {
 						kafkaProducer.send([{
 							topic: 'price', 
 							messages: JSON.stringify(stock)
-						}]);
+						}], function(res){
+							console.log(res)
+						});
 
 						break
 					case 'MARKETINFO':
@@ -111,7 +113,9 @@ function consumePriceService() {
 						kafkaProducer.send([{
 							topic: 'price', 
 							messages: JSON.stringify(market)
-						}]);
+						}], function(res){
+							console.log(res)
+						});
 						break
 				}
 
@@ -130,7 +134,7 @@ function consumePriceService() {
 PubSub.subscribe('socket_disconnect', function(){
 	consumePriceService();
 });
-
+	
 
 kafkaProducer.on('ready', function () {
     console.log("connect kafka")
