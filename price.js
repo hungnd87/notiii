@@ -101,8 +101,7 @@ function consumePriceService() {
 						var stock = MessageUnmarshaller.unmarshal('STOCK', msg.data)
 						kafkaProducer.send([{
 							topic: 'price', 
-							messages: JSON.stringify(stock), 
-							partition: 0 
+							messages: JSON.stringify(stock)
 						}]);
 
 						break
@@ -111,8 +110,7 @@ function consumePriceService() {
 						var market = MessageUnmarshaller.unmarshal('MARKETINFO', msg.data)
 						kafkaProducer.send([{
 							topic: 'price', 
-							messages: JSON.stringify(market), 
-							partition: 0
+							messages: JSON.stringify(market)
 						}]);
 						break
 				}
@@ -133,9 +131,6 @@ PubSub.subscribe('socket_disconnect', function(){
 	consumePriceService();
 });
 
-kafkaClient.close(function(e){
-	console.log(e)
-})
 
 kafkaProducer.on('ready', function () {
     console.log("connect kafka")
