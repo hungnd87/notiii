@@ -133,6 +133,10 @@ PubSub.subscribe('socket_disconnect', function(){
 	consumePriceService();
 });
 
+kafkaClient.close(function(e){
+	console.log(e)
+})
+
 kafkaProducer.on('ready', function () {
     console.log("connect kafka")
     consumePriceService();
