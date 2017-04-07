@@ -100,10 +100,10 @@ function consumePriceService() {
 						var stock = MessageUnmarshaller.unmarshal('STOCK', msg.data)
 						kafkaProducer.send([{
 							topic: 'price', 
-							messages: {
+							messages: JSON.stringify({
 								type: 'stock',
-								message: JSON.stringify(stock)
-							}
+								message: stock
+							})
 
 						}], function(res){
 							//console.log(res)
@@ -114,10 +114,10 @@ function consumePriceService() {
 						var market = MessageUnmarshaller.unmarshal('MARKETINFO', msg.data)
 						kafkaProducer.send([{
 							topic: 'price', 
-							messages: {
+							messages: JSON.stringify({
 								type: 'market',
-								message: JSON.stringify(market)
-							} 
+								message: market
+							}) 
 						}], function(res){
 							//console.log(res)
 						});
