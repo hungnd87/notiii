@@ -1,4 +1,5 @@
-var zmq = require('zmq')
+
+var zmq = require('zeromq')
   , sock = zmq.socket('pull');
  
 sock.connect('tcp://127.0.0.1:55551');
