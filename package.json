@@ -23,7 +23,8 @@
     "body-parser":"^1.17.1",
     "sockjs-client":"*",
     "sockjs":"*",
-    "kafka-node":"1.6.0"
+    "kafka-node":"1.6.0",
+    "zeromq":"4.2.0"
   },
   "readme": "README.md",
   "engines": {
