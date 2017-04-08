@@ -97,21 +97,30 @@ function consumePriceService() {
 						}
 						break
 					case 'STOCK':
-						var stock = MessageUnmarshaller.unmarshal('STOCK', msg.data.data)
+						var stock = MessageUnmarshaller.unmarshal('STOCK', msg.data)
 						kafkaProducer.send([{
-							topic: 'price', 
-							messages: JSON.stringify(stock), 
-							partition: 0 
-						}]);
+							topic: 'stocks', 
+							messages: JSON.stringify({
+								type: 'stock',
+								message: stock
+							})
+
+						}], function(res){
+							//console.log(res)
+						});
 
 						break
 					case 'MARKETINFO':
-						var market = MessageUnmarshaller.unmarshal('MARKETINFO', msg.data.data)
+						var market = MessageUnmarshaller.unmarshal('MARKETINFO', msg.data)
 						kafkaProducer.send([{
-							topic: 'price', 
-							messages: JSON.stringify(market), 
-							partition: 0
-						}]);
+							topic: 'stocks', 
+							messages: JSON.stringify({
+								type: 'market',
+								message: market
+							}) 
+						}], function(res){
+							//console.log(res)
+						});
 						break
 				}
 
@@ -130,6 +139,7 @@ function consumePriceService() {
 PubSub.subscribe('socket_disconnect', function(){
 	consumePriceService();
 });
+	
 
 kafkaProducer.on('ready', function () {
     console.log("connect kafka")
