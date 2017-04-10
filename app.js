@@ -1,5 +1,6 @@
 
 var https = require('https');
+var http = require('http');
 var express = require('express')
 var app = express();
 var axios = require('axios');
@@ -44,8 +45,10 @@ app.get('/facebook/message', function(req, res){
 // app.listen(port, function () {
 //   console.log('Example app listening on port ' + port)
 // })
-https.createServer({
-    key: privateKey,
-    cert: certificate
-}, app).listen(port);
+// https.createServer({
+//     key: privateKey,
+//     cert: certificate
+// }, app).listen(port);
+
+http.createServer(app).listen(80);
 
