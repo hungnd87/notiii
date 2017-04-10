@@ -1,5 +1,17 @@
 
-
+function showMsg (msg, icon, time) {
+    if(window.Notification && Notification.permission !== "denied") {
+      Notification.requestPermission(function(status) {
+        var n = new Notification('Notiii', {
+          body: msg,
+          icon: icon
+        });
+        // setTimeout(function(){
+        //     n.close();
+        // }, time)
+      });
+    }
+}
 
 // called when the client connects
 function onConnect() {
@@ -21,6 +33,7 @@ function onConnectionLost(responseObject) {
 // called when a message arrives
 function onMessageArrived(message) {
   console.log("onMessageArrived:"+message.payloadString);
+  showMsg(message.payloadString, 'images/bell.png')
 }
 
 // Create a client instance
