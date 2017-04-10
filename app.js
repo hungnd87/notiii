@@ -50,5 +50,5 @@ app.get('/facebook/message', function(req, res){
 //     cert: certificate
 // }, app).listen(port);
 
-http.createServer(app).listen(8080);
+http.createServer(app).listen(80);
 
