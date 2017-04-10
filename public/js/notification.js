@@ -24,7 +24,7 @@ function onMessageArrived(message) {
 }
 
 // Create a client instance
-client = new Paho.MQTT.Client('notiii.com', 1883, "web")
+client = new Paho.MQTT.Client('notiii.com', 1884,"clientId" );
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
