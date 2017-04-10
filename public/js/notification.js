@@ -5,10 +5,10 @@
 function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
   console.log("onConnect");
-  client.subscribe("World");
-  message = new Paho.MQTT.Message("Hello");
-  message.destinationName = "World";
-  client.send(message);
+  client.subscribe("signal");
+  // message = new Paho.MQTT.Message("Hello");
+  // message.destinationName = "World";
+  // client.send(message);
 }
 
 // called when the client loses its connection
@@ -24,7 +24,7 @@ function onMessageArrived(message) {
 }
 
 // Create a client instance
-client = new Paho.MQTT.Client('notiii.com', 1883, '/signal', "web")
+client = new Paho.MQTT.Client('notiii.com', 1883, "web")
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;

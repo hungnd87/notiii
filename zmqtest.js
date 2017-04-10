@@ -20,6 +20,9 @@ client.on('connect', function () {
 	console.log("connect mqtt")
   //client.subscribe('signal')
   client.publish('signal', 'Test')
+  setInterval(function(){
+  	client.publish('signal', 'Test')
+  }, 3000)
 })
  
 client.on('message', function (topic, message) {
