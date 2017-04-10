@@ -1,0 +1,19 @@
+INSTALLING MOSQUITTO UNDER CENTOS 7
+
+Step 1: Add the CentOS 7 mosquitto repository
+
+$ cd /etc/yum.repos.d
+$ wget http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-5/home:oojah:mqtt.repo
+$ sudo yum update
+Step 2: Install mosquitto & mosquitto-clients
+
+$ sudo yum install mosquitto
+$ sudo yum install mosquitto-clients
+Step 3: Run mosquitto
+
+$ sudo su
+# /usr/sbin/mosquitto -d -c /etc/mosquitto/mosquitto.conf > /var/log/mosquitto.log 2>&1
+Step 4: Test mosquitto_sub & mosquitto_pub
+
+$ mosquitto_sub -h [server_address] -t /[topic]
+$ mosquitto_pub -h [server_address] -t /[topic] -m “[message]”
