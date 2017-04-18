@@ -12,11 +12,10 @@ MongoClient.connect(url, function(err, db) {
  	PubSub.subscribe('ma_data', function(stocks){
  		stocks.forEach(function(stock, i){
  			stock['_id'] = stock.id;
- 			collection.index(stock);
+ 			collection.insert(stock);
  		});
  	});
 });
-
 
 
 var getStockData = function(stocks, index){
