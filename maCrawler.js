@@ -12,12 +12,12 @@ MongoClient.connect(url, function(err, db) {
  	PubSub.subscribe('ma_data', function(stocks){
  		stocks.forEach(function(stock, i){
  			stock['_id'] = stock.id;
- 			collection.insert(stock);
+ 			collection.insertOne(stock);
  		});
  	});
 });
 
-
+	
 var getStockData = function(stocks, index){
 
 	if(stocks.length == index) {
@@ -30,7 +30,7 @@ var getStockData = function(stocks, index){
 
 	var to = new Date();
 	var from = new Date();
- 	from.setDate(from.getDate()-50);
+ 	from.setDate(from.getDate()-100);
 
  	var fromDate = dateFormat(from, "yyyy-mm-dd");
  	var toDate = dateFormat(to, "yyyy-mm-dd");
