@@ -10,6 +10,7 @@ MongoClient.connect(url, function(err, db) {
   	console.log("Connected correctly to server");
   	var collection = db.collection('mastock');
  	PubSub.subscribe('ma_data', function(stocks){
+ 		console.log(stocks)
  		stocks.forEach(function(stock, i){
  			stock['_id'] = stock.id;
  			collection.index(stock);
@@ -40,8 +41,8 @@ var getStockData = function(stocks, index){
 	
 	console.log('get data from ' + url);
 	axios.get(url).then(function(response){
-		console.log(response.data);
-		PubSub.publish("ma_data",response.data);
+		//console.log(response.data);
+		PubSub.publish("ma_data",response.data.data);
 		getStockData(stocks, index);
 	});
 }
