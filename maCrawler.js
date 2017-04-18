@@ -8,7 +8,7 @@ var url = 'mongodb://103.63.109.80:27017/notiii';
 
 MongoClient.connect(url, function(err, db) {
   	console.log("Connected correctly to server");
-  	var collection = db.collection('mastock');
+  	var collection = db.collection('ma-stock');
  	PubSub.subscribe('ma_data', function(stocks){
  		stocks.forEach(function(stock, i){
  			stock['_id'] = stock.id;
