@@ -53,7 +53,7 @@ MessageUnmarshaller = {
 			itemInfo.buyForeignQtty = arr[37];
 			itemInfo.sellForeignQtty = arr[38];
 			itemInfo.projectOpen = arr[39];
-			itemInfo.sequence = arr[40];
+			//itemInfo.sequence = arr[40];
 			return itemInfo;
 		},
 		MARKETINFO: function (mess){
