@@ -12,7 +12,14 @@ MongoClient.connect(url, function(err, db) {
  	PubSub.subscribe('ma_data', function(stocks){
  		stocks.forEach(function(stock, i){
  			stock['_id'] = stock.id;
- 			collection.insertOne(stock);
+ 			try {
+	 			collection.update({_id: stock.id},  stock, { upsert: true}, function(e){
+	 			});
+ 			} catch(err){
+ 				console.log('save ma fail ' + stock.id);
+ 				console.log(err)
+ 			}
+ 			
  		});
  	});
 });
