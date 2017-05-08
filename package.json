@@ -22,6 +22,7 @@
     "express": "^4.15.2",
     "facebook-node-sdk": "^0.2.0",
     "fb": "^1.1.1",
+    "firebase-admin": "^4.2.1",
     "kafka-node": "1.6.0",
     "mongodb": "^2.2.26",
     "mqtt": "2.6.2",

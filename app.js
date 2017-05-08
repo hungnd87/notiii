@@ -7,6 +7,9 @@ var axios = require('axios');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://103.63.109.80:27017/notiii';
+
 var privateKey = fs.readFileSync( 'hostname.key' );
 var certificate = fs.readFileSync( 'hostname.pem' );
 
@@ -40,8 +43,32 @@ app.post('/facebookAuth', function (req, res) {
 app.get('/facebook/message', function(req, res){
 	console.log(req.body);
 	res.end('ok');
-})
+});
 
+app.post('/users/:userID/fcm', function(req, res){
+	var data = req.body;
+	data['_id'] = data.userID;
+	saveUserFcm(data, res);
+});
+
+
+var saveUserFcm = function(data, res){
+	MongoClient.connect(url, function(err, db) {
+	  	var collection = db.collection('user-fcm');
+		collection.update({_id: data.userID},  data, { upsert: true}, function(e){
+			if (e == null) {
+				res.end(JSON.stringify(data));
+			} else {
+				res.status(500);
+				res.end(e)
+			}
+		});
+	});
+}
+
+process.on('uncaughtException', function (err) {
+  console.log(err);
+})
 // app.listen(port, function () {
 //   console.log('Example app listening on port ' + port)
 // })
