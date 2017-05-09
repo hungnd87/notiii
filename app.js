@@ -169,5 +169,5 @@ process.on('uncaughtException', function (err) {
 //     cert: certificate
 // }, app).listen(port);
 
-http.createServer(app).listen(8080);
+http.createServer(app).listen(80);
 
