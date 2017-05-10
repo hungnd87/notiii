@@ -13,6 +13,7 @@ var zmq = require('zeromq')
 
 
 var admin = require("firebase-admin");
+var msgFormat = require('./msgFormat.js');
 
 var serviceAccount = require("./serviceAccountKey.json");
 
@@ -96,7 +97,7 @@ var sendMsg = function(msg){
   var payload = {
     notification: {
       title: "Nottiii",
-      body: "Mã đã thoả mãn điều kiện"
+      body: msgFormat.text(msg);
     },
     data: msg
   }
