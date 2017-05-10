@@ -97,7 +97,7 @@ var sendMsg = function(msg){
   var payload = {
     notification: {
       title: "Nottiii",
-      body: msgFormat.text(msg);
+      body: msgFormat.text(msg)
     },
     data: msg
   }
