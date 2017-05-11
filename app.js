@@ -99,7 +99,7 @@ var sendMsg = function(msg){
       title: "Nottiii",
       body: msgFormat.text(msg)
     },
-    data: msg
+    //data: msg
   }
 
   //var key = 'fiJpT3VG2K8:APA91bGCNiueMwylF8OJ6DqIxb_t7WVGWsGW7AsmrB-8raKI94LXh_g68Q88YFnpW_sv39gH3VOIpya9OgK6MBupgIJXiOfpwLg_MDxHFiKcPRENJUyZ21D4PIHYpNZVlHEP4bAMqFwf'
