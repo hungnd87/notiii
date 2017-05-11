@@ -10,8 +10,10 @@ MongoClient.connect(url, function(err, db) {
   	console.log("Connected correctly to server");
   	var collection = db.collection('ma-stock');
  	PubSub.subscribe('ma_data', function(stocks){
+
  		stocks.forEach(function(stock, i){
  			stock['_id'] = stock.id;
+ 			stock.date = new Date(stock.tradingDate);
  			try {
 	 			collection.update({_id: stock.id},  stock, { upsert: true}, function(e){
 	 			});
