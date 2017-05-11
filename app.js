@@ -9,7 +9,7 @@ var fs = require('fs');
 
 
 var zmq = require('zeromq')
-  , sock = zmq.socket('pull');
+  , sock = zmq.socket('sub');
 
 
 var admin = require("firebase-admin");
@@ -146,16 +146,15 @@ loadFcmKey();
 // 	console.log("connect mqtt")
 
 sock.connect('tcp://127.0.0.1:55551');
- 	console.log('Worker connected to port 55551');
+console.log('Worker connected to port 55551');
 	 
- 	sock.on('message', function(msg){
-	  console.log('work: %s', msg.toString());
-	  setTimeout(function(){
+sock.on('message', function(topic, msg){
+	console.log('receive msg from ' + topic)
+	console.log('work: %s', msg.toString());
+	setTimeout(function(){
 		sendMsg(msg);
-	  }, 30000)
-    
-
- 	  //client.publish('signal', msg.toString());
+	}, 30000)
+     	  //client.publish('signal', msg.toString());
 });
 
 // END NOTIFICATION BLOCK  
