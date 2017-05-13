@@ -145,14 +145,16 @@ loadFcmKey();
 // client.on('connect', function () {
 // 	console.log("connect mqtt")
 
-sock.connect('tcp://127.0.0.1:55551');
+sock.connect('tcp://103.63.109.80:55551');
+//sock.connect('tcp://127.0.0.1:55551');
 console.log('Worker connected to port 55551');
-	 
+sock.subscribe('');
+
 sock.on('message', function(topic, msg){
 	console.log('receive msg from ' + topic)
-	console.log('work: %s', msg.toString());
+	console.log('data: %s', msg);
 	setTimeout(function(){
-		sendMsg(msg);
+	 	sendMsg(msg);
 	}, 30000)
      	  //client.publish('signal', msg.toString());
 });
@@ -172,5 +174,5 @@ process.on('uncaughtException', function (err) {
 //     cert: certificate
 // }, app).listen(port);
 
-http.createServer(app).listen(80);
+http.createServer(app).listen(8080);
 
