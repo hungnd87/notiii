@@ -153,9 +153,7 @@ sock.subscribe('');
 sock.on('message', function(topic, msg){
 	console.log('receive msg from ' + topic)
 	console.log('data: %s', msg);
-	setTimeout(function(){
-	 	sendMsg(JSON.parse(msg.toString()));
-	}, 3000)
+	sendMsg(JSON.parse(msg.toString()));
      	  //client.publish('signal', msg.toString());
 });
 
