@@ -154,8 +154,8 @@ sock.on('message', function(topic, msg){
 	console.log('receive msg from ' + topic)
 	console.log('data: %s', msg);
 	setTimeout(function(){
-	 	sendMsg(msg);
-	}, 30000)
+	 	sendMsg(JSON.parse(msg.toString()));
+	}, 3000)
      	  //client.publish('signal', msg.toString());
 });
 
