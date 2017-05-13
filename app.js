@@ -65,6 +65,23 @@ app.post('/users/:userID/fcm', function(req, res){
 app.post('/users/:userID/sendTestMsg', function(req, res){
 	sendMsg(req.body);
 	res.end('ok');
+});
+
+app.get('/users/:userID/notifications', function(req, res){
+	var userID = req.params.userID;
+
+	MongoClient.connect(url, function(err, db) {
+	  	var collection = db.collection('fcm-notiii');
+		collection.find({userID: userID}).toArray(function(err, docs) {
+			if (err != null) {
+				res.status(500).end('fail');
+			} else {
+				res.status(200).json(docs);
+				res.end()
+			}
+			db.close();
+		});
+	});
 })
 
 
@@ -80,6 +97,7 @@ var saveUserFcm = function(data, res){
 				res.status(500);
 				res.end(e)
 			}
+			db.close();
 		});
 	});
 }
@@ -120,7 +138,22 @@ var sendMsg = function(msg){
    else {
    		console.log('Lỗi không tìm thấy fcmkey của user' + msg.userID);
    }
+ 	msg.noti = payload;
+   saveToMongoDb(msg);
   
+}
+
+var saveToMongoDb = function(payload){
+	MongoClient.connect(url, function(err, db) {
+	  	var collection = db.collection('fcm-notiii');
+		collection.insert(payload, { upsert: true}, function(e){
+			if (e != null) {
+				console.log('save noti lỗi');
+				console.log(payload);
+			}
+			db.close();
+		});
+	});
 }
 
 var loadFcmKey = function(){
@@ -172,5 +205,5 @@ process.on('uncaughtException', function (err) {
 //     cert: certificate
 // }, app).listen(port);
 
-http.createServer(app).listen(80);
+http.createServer(app).listen(8080);
 
