@@ -89,7 +89,7 @@ app.get('/users/:userID/notifications', function(req, res){
 
 	MongoClient.connect(url, function(err, db) {
 	  	var collection = db.collection('fcm-notiii');
-		collection.find({userID: userID}).toArray(function(err, docs) {
+		collection.find({userID: userID}).sort({triggeredAt: -1}).toArray(function(err, docs) {
 			if (err != null) {
 				res.status(500).end('fail');
 			} else {
