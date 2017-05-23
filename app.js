@@ -8,12 +8,15 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 
 
+
 var zmq = require('zeromq')
   , sock = zmq.socket('sub');
 
 
 var admin = require("firebase-admin");
 var msgFormat = require('./msgFormat.js');
+
+var notiCounter = require('./notiCounter.js');
 
 var serviceAccount = require("./serviceAccountKey.json");
 
@@ -172,11 +175,6 @@ var loadFcmKey = function(){
 
 loadFcmKey();
 
-// var mqtt = require('mqtt')
-// var client  = mqtt.connect('mqtt://localhost')
- 
-// client.on('connect', function () {
-// 	console.log("connect mqtt")
 
 sock.connect('tcp://103.63.109.80:55551');
 //sock.connect('tcp://127.0.0.1:55551');
@@ -197,13 +195,7 @@ process.on('uncaughtException', function (err) {
 });
 
 
-// app.listen(port, function () {
-//   console.log('Example app listening on port ' + port)
-// })
-// https.createServer({
-//     key: privateKey,
-//     cert: certificate
-// }, app).listen(port);
+notiCounter.init();
 
-http.createServer(app).listen(80);
+http.createServer(app).listen(8080);
 
