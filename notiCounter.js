@@ -22,7 +22,7 @@ module.exports = {
 		saveToDb(userID, 0);
 	},
 	count: function(userID){
-		if (typeof countMap[userID] !== 'undefined') return 0;
+		if (typeof countMap[userID] === 'undefined') return 0;
 		return countMap[userID]
 
 	},

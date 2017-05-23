@@ -70,6 +70,20 @@ app.post('/users/:userID/sendTestMsg', function(req, res){
 	res.end('ok');
 });
 
+app.get('/users/:userID/notifications/count', function(req, res) {
+	var userID = req.params.userID;
+	res.status(200).json({
+		userID: userID,
+		count: notiCounter.count(userID)
+	});
+});
+
+app.put('/users/:userID/notifications/_reset', function(req, res) {
+	var userID = req.params.userID;
+	notiCounter.reset(userID);
+	res.end('ok')
+});
+
 app.get('/users/:userID/notifications', function(req, res){
 	var userID = req.params.userID;
 
@@ -143,6 +157,7 @@ var sendMsg = function(msg){
    }
  	msg.noti = payload;
    saveToMongoDb(msg);
+   notiCounter.increase(msg.userID);
   
 }
 
