@@ -197,5 +197,5 @@ process.on('uncaughtException', function (err) {
 
 notiCounter.init();
 
-http.createServer(app).listen(8080);
+http.createServer(app).listen(80);
 
