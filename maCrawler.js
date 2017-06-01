@@ -39,7 +39,7 @@ var getStockData = function(stocks, index){
 
 	var to = new Date();
 	var from = new Date();
- 	from.setDate(from.getDate()-100);
+ 	from.setDate(from.getDate()-300);
 
  	var fromDate = dateFormat(from, "yyyy-mm-dd");
  	var toDate = dateFormat(to, "yyyy-mm-dd");
