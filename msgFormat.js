@@ -12,7 +12,7 @@ var getConditionText = function(condition){
 }
 
 var getNotiMessage = function(msg){
-	var text = 'Thoả mãn điều kiện:';
+	var text = 'Thoả mãn điều kiện: ';
 	for (var i=0; i<msg.operators.length; i++) {
 		if (i>0) text += ', '
 		text += getConditionText(msg.operators[i]);
