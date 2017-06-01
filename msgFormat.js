@@ -6,7 +6,7 @@ var getConditionText = function(condition){
 		return condition.symbol + ' giá ' + condition.operator + ' ' + condition.value;
 	}
 	if (condition.field == "accumulatedVol" ) {
-		return condition.symbol + ' khối lượng ' + condition.operator + ' ' + condition.value;
+		return condition.symbol + ' khối lượng ' + condition.operator + ' ' + parseInt(condition.value);
 	}
 	return condition.symbol + ' ' + condition.field + ' ' + condition.operator + ' ' + condition.value;
 }
