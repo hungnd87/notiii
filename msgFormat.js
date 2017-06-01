@@ -5,7 +5,7 @@ var getConditionText = function(condition){
 	if (condition.field == "matchedPrice" ) {
 		return condition.symbol + ' giá ' + condition.operator + ' ' + condition.value;
 	}
-	if (condition.field == "matchedQuanty" ) {
+	if (condition.field == "accumulatedVol" ) {
 		return condition.symbol + ' khối lượng ' + condition.operator + ' ' + condition.value;
 	}
 	return condition.symbol + ' ' + condition.field + ' ' + condition.operator + ' ' + condition.value;
