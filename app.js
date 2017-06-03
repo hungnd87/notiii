@@ -86,10 +86,20 @@ app.put('/users/:userID/notifications/_reset', function(req, res) {
 
 app.get('/users/:userID/notifications', function(req, res){
 	var userID = req.params.userID;
+	var pageSize = parseInt(req.query.pageSize);
+	var pageNumber = parseInt(req.query.pageNumber);
+
 
 	MongoClient.connect(url, function(err, db) {
 	  	var collection = db.collection('fcm-notiii');
-		collection.find({userID: userID}).sort({triggeredAt: -1}).toArray(function(err, docs) {
+
+	  	
+	  	//.skip(NUMBER_OF_ITEMS * (PAGE_NUMBER - 1)).limit(NUMBER_OF_ITEMS 
+		collection.find({userID: userID}, {
+			skip: pageNumber * pageSize,
+			limit: pageSize,
+			sort: {triggeredAt: -1}
+		}).toArray(function(err, docs) {
 			if (err != null) {
 				res.status(500).end('fail');
 			} else {
