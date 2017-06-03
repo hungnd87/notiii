@@ -3,7 +3,8 @@
 var getConditionText = function(condition){
 	var text = '';
 	if (condition.field == "matchedPrice" ) {
-		return condition.symbol + ' giá ' + condition.operator + ' ' + condition.value;
+		var price = parseFloat(condition.value)/1000;
+		return condition.symbol + ' giá ' + condition.operator + ' ' + price;
 	}
 	if (condition.field == "accumulatedVol" ) {
 		return condition.symbol + ' khối lượng ' + condition.operator + ' ' + parseInt(condition.value);
