@@ -9,6 +9,12 @@ var getConditionText = function(condition){
 	if (condition.field == "accumulatedVol" ) {
 		return condition.symbol + ' khối lượng ' + condition.operator + ' ' + parseInt(condition.value);
 	}
+	if (condition.field == "ma20_x_ma50_cu" ) {
+		return "ma20 cắt lên ma50"
+	}
+	if (condition.field == "ma20_x_ma50_cd") {
+		return "ma20 cắt xuống ma50"
+	}
 	return condition.symbol + ' ' + condition.field + ' ' + condition.operator + ' ' + condition.value;
 }
 
