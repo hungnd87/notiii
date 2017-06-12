@@ -206,8 +206,8 @@ sock.connect('tcp://103.63.109.80:55551');
 console.log('Worker connected to port 55551');
 sock.subscribe('');
 
-sock.on('message', function(topic, msg){
-	console.log('receive msg from ' + topic)
+sock.on('message', function(msg){
+	console.log('receive msg')
 	console.log('data: %s', msg);
 	sendMsg(JSON.parse(msg.toString()));
      	  //client.publish('signal', msg.toString());
