@@ -44,6 +44,7 @@ var stockCodes = []
 function getStockList(){
 	return axios.get('https://finfoapi-hn.vndirect.com.vn/stocks').then(function(response){
 		var stocks = response.data.data;
+		stockCodes = [];
 		stocks.forEach(function(stock, i){
 			//console.log(stock)
 			stockDictionary[stock.symbol] = stock;
