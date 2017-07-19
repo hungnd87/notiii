@@ -4,7 +4,7 @@ var dateFormat = require('dateformat');
 var MongoClient = require('mongodb').MongoClient;
 var PubSub = require('./PubSub.js');
 
-var url = 'mongodb://103.63.109.80:27017/notiii';
+var url = 'mongodb://103.63.109.126:27017/notiii';
 
 MongoClient.connect(url, function(err, db) {
   	console.log("Connected correctly to server");

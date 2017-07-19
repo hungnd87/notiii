@@ -21,7 +21,7 @@ var notiCounter = require('./notiCounter.js');
 var serviceAccount = require("./serviceAccountKey.json");
 
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://103.63.109.80:27017/notiii';
+var url = 'mongodb://103.63.109.126:27017/notiii';
 
 var privateKey = fs.readFileSync( 'hostname.key' );
 var certificate = fs.readFileSync( 'hostname.pem' );
